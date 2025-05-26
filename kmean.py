@@ -42,17 +42,11 @@ class KMeans:
       raise ValueError("Input data must be a 2D array.")
     if not isinstance(x, np.ndarray):
       raise ValueError("Input data must be a numpy array.")
-    if x.shape[0] < self.k:
-      raise ValueError("Number of clusters k cannot be greater than the number of data points.")
-    if x.shape[1] < 1:
-      raise ValueError("Input data must have at least one feature.")
     if x.shape[0] == 0:
       raise ValueError("Input data cannot be empty.")
-    if x.dtype != np.float64 and x.dtype != np.float32:
-      raise ValueError("Input data must be of type float64 or float32.")
     if x.shape[0] == 1:
       raise ValueError("Input data must have more than one data point.")
-    if x.shape[1] == 1:
+    if x.shape[1] <= 1:
       raise ValueError("Input data must have more than one feature.")
     return True
 
@@ -141,7 +135,7 @@ class KMeans:
         count += 1
     return count == self.k
 
-  def plot(self):
+  def plot_(self):
     """This function plots the clusters and centroids.
     It uses PCA to reduce the dimensionality of the data to 2D for visualization.
     Returns: None
@@ -212,7 +206,7 @@ class KMeans:
         print(f"Convergence reached after {i + 1} steps!!!")
         self.number_of_iterations = i + 1
         if plot:
-          self.plot()
+          self.plot_()
         break
       i += 1
   def inertia(self):
@@ -225,7 +219,7 @@ class KMeans:
     for i, cluster in enumerate(self.clusters):
       if len(cluster) > 0:
         self.inertia_ += np.sum((cluster - self.centroids[i])**2)
-    return self
+    return self.inertia_
   
 
 class PCA1:
