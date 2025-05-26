@@ -19,3 +19,10 @@ def datas():
     with unzipfile.open("Mall_Customers.csv") as file:
         data = pd.read_csv(file)
   return data
+
+def prep_data(data):
+    # Dropping the 'CustomerID' column
+    data = data.drop(columns=['CustomerID'])
+    # Encoding the gender column
+    data_encod = data.replace({"Male": 1, "Female": 0})
+    return data_encod.to_numpy()
