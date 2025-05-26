@@ -3,18 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-from utils import datas
+from utils import datas, prep_data
 
 if __name__ == "__main__":
 
+    # Loading and preprocessing the data
     data = datas()
     print(data.head())
-
-    # Dropping the 'CustomerID' column
-    data = data.drop(columns=['CustomerID'])
-    # Encoding the gender column
-    data_encod = data.replace({"Male":1, "Female":0})
-    x_mall = data_encod.to_numpy()
+    x_mall = prep_data(data)
 
     # Clustering the data using KMeans
     kmean = KMeans(n_clusters=5, init_plus=False, max_iter=100)
