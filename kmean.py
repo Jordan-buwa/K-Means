@@ -24,6 +24,7 @@ class KMeans:
     self.centroids = None
     self.clusters = None
     self.max_iter = max_iter
+    self.inertia_ = None
   def input_check(self, x):
     """This function checks the input data for validity.
     Arg: 
@@ -149,7 +150,6 @@ class KMeans:
       self.cent_plot = cent.transform()
       for i in range(self.k):
         if len(self.cl_plot[i])>0:
-          #self.cl_plot[i] = self.cl_plot[i].reshape(len(self.cl_plot[i]), 1)
           clust.fit(self.cl_plot[i])                    
           self.cl_plot[i] = clust.transform()
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -158,11 +158,11 @@ class KMeans:
     for i, cluster in enumerate(self.cl_plot):
         if len(cluster) > 0:
           cluster = np.array(cluster)
-          ax.scatter(cluster[:, 0], cluster[:, 1])
+          ax.scatter(cluster[:, 0], cluster[:, 1], cmap='viridis', marker='o', s=50, alpha=0.6)
 
     # Plotting centroids
     for point in self.cent_plot:
-        ax.scatter(*point, marker="x", color="black", linewidth=2)
+        ax.scatter(*point, linewidth=2,  c='red', marker='X', s=200, label='Centroids')
 
     plt.show()
 
@@ -218,7 +218,7 @@ class KMeans:
     self.inertia_ = 0
     for i, cluster in enumerate(self.clusters):
       if len(cluster) > 0:
-        self.inertia_ += np.sum((cluster - self.centroids[i])**2)
+        self.inertia_ += np.sum([(cluster[j] - self.centroids[i])**2 for j in range(len(cluster))])
     return self.inertia_
   
 

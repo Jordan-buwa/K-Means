@@ -1,6 +1,10 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 import zipfile
+
+
 def mean(X): # np.mean(X, axis = 0)
   # Your code here
   return np.mean(X, axis = 0, keepdims=True)
@@ -26,3 +30,4 @@ def prep_data(data):
     # Encoding the gender column
     data_encod = data.replace({"Male": 1, "Female": 0})
     return data_encod.to_numpy()
+
