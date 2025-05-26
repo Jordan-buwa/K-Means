@@ -16,13 +16,13 @@ if __name__ == "__main__":
     kmean = KMeans(n_clusters=5, init_plus=False, max_iter=100)
     kmean.fit(x_mall)
     # Plotting the clusters
-    kmean.plot()
+    kmean.plot_()
 
     # Clustering the data using KMeans
     kmean = KMeans(n_clusters=5, init_plus=True, max_iter=100, seed=42)
     kmean.fit(x_mall)
     # Plotting the clusters
-    kmean.plot()
+    kmean.plot_()
 
     # Finding the optimal number of clusters using the Elbow method (KMeans++ initialization)
     inertia = []
