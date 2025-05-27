@@ -1,2 +1,12 @@
 __pycache__/
 archive.zip
+scatter_matrix.png
+spending_score_distribution.png
+age_distribution.png
+annual_income_distribution.png
+random_init.png
+random_init_sil.png
+plus_init.png
+plus_init_sil.png
+output.png
+outputplus.png

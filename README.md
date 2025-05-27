@@ -1,12 +1,13 @@
 # K-Means
 
-This project implements the K-Means clustering algorithm from scratch and demonstrates its application on a sample dataset (Mall Customers). It includes both standard K-Means and K-Means++ initialization, as well as visualization of clustering results and the Elbow method for optimal cluster selection.
+This project implements the K-Means clustering algorithm from scratch and demonstrates its application on a sample dataset (**[Mall Customer](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python/code)**). It includes both standard K-Means and K-Means++ initialization, as well as visualization of clustering results and the Elbow method for optimal cluster selection.
 
 ## Features
 
 - Custom K-Means and K-Means++ initialization
 - Visualization of clusters and centroids
 - Elbow method to determine optimal number of clusters
+- Silhouette Score for determinink the number of clusters
 - Data preprocessing (encoding categorical variables, dropping unnecessary columns)
 
 ## Requirements
@@ -33,6 +34,8 @@ K-Means/
 ├── main.py
 ├── kmean.py
 ├── utils.py
+├── test.ipynb
+├── core.py
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
@@ -65,6 +68,7 @@ This will:
 
 - [`kmean.py`](kmean.py): Contains the `KMeans` class some methods.
 - [`main.py`](main.py): Example usage of the `KMeans` class.
+- [`test.ipynb`](test.ipynb): Example usage of the `KMeans` class with the Mall dataset **[Mall Customer dataset](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python/code)**.
 - [`requirements.txt`](requirements.txt): List of required Python packages.
 
 ## License
