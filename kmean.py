@@ -220,6 +220,26 @@ class KMeans:
       if len(cluster) > 0:
         self.inertia_ += np.sum([(cluster[j] - self.centroids[i])**2 for j in range(len(cluster))])
     return self.inertia_
+  def labels(self):
+    """This function returns the labels of the clusters.
+    Returns: An array of labels for each data point, indicating the cluster it belongs to.
+    """
+    if self.clusters is None:
+      raise ValueError("Clusters must be computed before getting labels.")
+
+    # Flatten all points and assign labels
+    all_points = []
+    labels = []
+
+    for cluster_idx, cluster in enumerate(self.clusters):
+      for point in cluster:
+          all_points.append(point)
+          labels.append(cluster_idx)
+
+    # Convert to NumPy arrays for use in analysis or plotting
+    self.x = np.array(all_points)
+    self.labels = np.array(labels)
+    return self.labels
   
 
 class PCA1:
@@ -274,4 +294,4 @@ class PCA1:
     """
     X = np.array(X)
     self.X = self.Standardize_data(X)
-    return self
+    return self.X
